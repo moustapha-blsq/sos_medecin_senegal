@@ -1,0 +1,16 @@
+
+body{
+    background-color: rgb(238, 237, 237);
+}
+table tr td{
+    font: Calibri;
+    font-size: 12px;
+}
+table tr th{
+    font: Calibri;
+    font-size: 12px;
+}
+button{
+    font: Calibri;
+    font-size: 12px;
+}
