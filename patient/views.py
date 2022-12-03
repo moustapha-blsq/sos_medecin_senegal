@@ -29,4 +29,4 @@ def save(request):
 def get_patient(request, id):
   patient = Patient.objects.get(pk=id)
   pat = {'patient': patient}
-  return render(request, 'dossier_patient.html', pat)
+  return render(request, 'patient/dossier_patient.html', pat)

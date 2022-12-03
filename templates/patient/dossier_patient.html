@@ -39,83 +39,30 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Add patient</h1>
+                <h1 class="mt-4">Dossier patient</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item active">Gestion des patients</li>
+                    <li class="breadcrumb-item active">Details patients</li>
                 </ol>
 
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-user"></i>
-                        Ajout nouveau patient
-                    </div>
-                    <form method="post" action="save_patient">
-                         {% csrf_token %}
+                        Patient <br/>
+
                         <table class="table">
                             <tr>
-                                <td  colspan="2">
-                                    <div class="form-floating mb-3 mb-md-0">
-                                        <input class="form-control" id="inputFirstName" name="prenom" type="text"
-                                               placeholder="Enter your first name" required/>
-                                        <label for="inputFirstName">Prénom</label>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="form-floating mb-3 mb-md-0">
-                                        <input class="form-control" id="inputFirstName" name="nom" type="text"
-                                               placeholder="Enter your last name" required/>
-                                        <label for="inputFirstName">Nom</label>
-                                    </div>
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="form-floating mb-3 mb-md-0">
-                                        <input class="form-control" id="inputFirstName" name="age" type="number"
-                                               placeholder="Enter your age" min="1" required/>
-                                        <label for="inputFirstName">Age (en années)</label>
-                                    </div>
-                                </td>
-                                <td>
-                                    Sexe
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="sexe"
-                                               id="flexRadioDefault1" value="M" required>
-                                        <label class="form-check-label" for="flexRadioDefault1">
-                                            M
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="sexe"
-                                               id="flexRadioDefault2" value="F" required>
-                                        <label class="form-check-label" for="flexRadioDefault2">
-                                            F
-                                        </label>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="form-floating mb-3 mb-md-0">
-                                        <input class="form-control" id="inputFirstName" name="telephone" type="text"
-                                               placeholder="Enter your phone umber" required/>
-                                        <label for="inputFirstName">Numéro de telephone</label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3">
-                                    <textarea class="form-control" id="inputFirstName" name="adresse"
-                                               placeholder="Enter your adress" rows="5" required></textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3">
-                                    <input type="submit" name="save_patient" class="form-control btn btn-primary" value="Enregistrer">
-                                </td>
+                                <td><font size="2px"><b>Prénom :</b> {{patient.prenom}}</font></td>
+                                <td><font size="2px"><b>Nom :</b> {{patient.nom}}</font></td>
+                                <td><font size="2px"><b>Sexe :</b> {{patient.sexe}}</font></td>
+                                <td><font size="2px"><b>Age :</b> {{patient.age}} ans</font></td>
+                                <td><font size="2px"><b>Tel :</b> {{patient.telephone}}</font></td>
+                                <td><font size="2px"><b>Adresse :</b> {{patient.adresse}}</font></td>
+                                <td><font size="2px"><b>Date création :</b> {{patient.date_creation}}</font></td>
                             </tr>
                         </table>
-                        </font>
-                    </form>
+
+                    </div>
+
                 </div>
             </div>
         </main>

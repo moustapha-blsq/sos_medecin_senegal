@@ -20,5 +20,6 @@ from . import views
 urlpatterns = [
     path('', views.home),
     path('ajout_patient', views.add),
-    path('save_patient', views.save)
+    path('save_patient', views.save),
+    path('dossier/<int:id>', views.get_patient)
 ]
