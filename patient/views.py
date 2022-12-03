@@ -9,6 +9,7 @@ def home(request):
   #  return HttpResponse('Bienvenue sur mon app DJANGO')
   all_patients =  Patient.objects.all()
   # Création de dictionnaire
+  patient_count = all_patients.count()
   context = {'patients':all_patients}
   return render(request, 'patient/index.html', context)
 
@@ -25,3 +26,7 @@ def save(request):
       adress = request.POST['adresse']
       patient = Patient.objects.create(prenom=prenom, nom=nom, age=age, sexe=sexe, adresse=adress, telephone=telephone)
     return render(request, 'patient/add_patient.html')
+def get_patient(request, id):
+  patient = Patient.objects.get(pk=id)
+  pat = {'patient': patient}
+  return render(request, 'dossier_patient.html', pat)
