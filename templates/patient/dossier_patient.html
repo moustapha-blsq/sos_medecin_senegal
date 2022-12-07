@@ -47,7 +47,7 @@
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-user"></i>
-                        Patient <br/>
+                        PATIENT <br/>
 
                         <table class="table">
                             <tr>
@@ -61,6 +61,52 @@
                             </tr>
                         </table>
 
+                    </div>
+
+                </div>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-ambulance"></i>
+                        INTERVENTION <br/>
+                        <div align="right">
+                            <a href="/add_intervention/{{patient.id}}"><button class="btn btn-primary"><i class="fas fa-plus-circle"></i></button></a>
+                        </div>
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th><font size="2px">Médecin</font></th>
+                                <th><font size="2px">Paramédical</font></th>
+                                <th><font size="2px">Ambulancier</font></th>
+                                <th><font size="2px">Origine Appel</font></th>
+                                <th><font size="2px">Motif appel</font></th>
+                                <th><font size="2px">Nom appellant</font></th>
+                                <th><font size="2px">Numéro appellant</font></th>
+                                <th><font size="2px">Lieu intervention</font></th>
+                                <th><font size="2px">Décision</font></th>
+                                <th><font size="2px">Trajet</font></th>
+                                <th><font size="2px">Num. ambulance</font></th>
+                                <th><font size="2px">Diagnostique évoqué</font></th>
+                            </tr>
+                            <tr>
+                                <td><font size="2px">{{interventions.medecin}}</font></td>
+                                <td><font size="2px">{{interventions.paramedical}}</font></td>
+                                <td><font size="2px">{{interventions.ambulancier}}</font></td>
+                                <td><font size="2px">{{interventions.origine_appel}}</font></td>
+                                <td><font size="2px">{{interventions.Motif_appel}}</font></td>
+                                <td><font size="2px">{{interventions.nom_appelant}}</font></td>
+                                <td><font size="2px">{{interventions.telephone_appelant}}</font></td>
+                                <td><font size="2px">{{interventions.lieu_intervention}}</font></td>
+                                <td><font size="2px">{{interventions.decision}}</font></td>
+                                <td><font size="2px">{{interventions.trajet}}</font></td>
+                                <td><font size="2px">{{interventions.numero_ambulance}}</font></td>
+                                <td><font size="2px">{{interventions.diagnostique_evoque}}</font></td>
+
+                            </tr>
+                            </thead>
+
+                        </table>
+                        </font>
                     </div>
 
                 </div>

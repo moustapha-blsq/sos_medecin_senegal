@@ -21,5 +21,7 @@ urlpatterns = [
     path('', views.home),
     path('ajout_patient', views.add),
     path('save_patient', views.save),
-    path('dossier/<int:id>', views.get_patient)
+    path('dossier/<int:id>', views.get_patient),
+    path('add_intervention/<int:id>', views.add_intervention),
+    path('detail_patient', views.save_intervention)
 ]

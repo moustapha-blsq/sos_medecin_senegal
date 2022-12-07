@@ -1,0 +1,128 @@
+{%extends 'main.html'%}
+{% load static %}
+{% block content %}
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <!-- Navbar Brand-->
+    <a class="navbar-brand ps-3" href="index.html"><img src="{% static 'img/sos-logo.png' %}" width="200px"
+                                                        class="logo"></a>
+
+    <!-- Sidebar Toggle-->
+    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+            class="fas fa-bars"></i></button>
+    <font color="#fff"></font>
+    <!-- Navbar Search-->
+    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+        <div class="input-group">
+            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
+                   aria-describedby="btnNavbarSearch"/>
+            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+        </div>
+    </form>
+    <!-- Navbar-->
+    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+               aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#!">Settings</a></li>
+                <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                <li>
+                    <hr class="dropdown-divider"/>
+                </li>
+                <li><a class="dropdown-item" href="#!">Logout</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+<div id="layoutSidenav">
+    {% include 'base/sidebar.html' %}
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <h1 class="mt-4">Add personel</h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item active">Gestion personnel</li>
+                </ol>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-user"></i>
+                        Ajout nouveau personnel
+                    </div>
+                    <form method="post" action="save_personnel">
+                        {% csrf_token %}
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    <div class="form-floating mb-3 mb-md-0">
+                                        <input class="form-control" id="inputFirstName" name="matricule" type="text"
+                                               placeholder="" required/>
+                                        <label for="inputFirstName">Matricule</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-floating mb-3 mb-md-0">
+                                        <input class="form-control" id="inputFirstName" name="prenom" type="text"
+                                               placeholder="Enter your last name" required/>
+                                        <label for="inputFirstName">Prénom</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-floating mb-3 mb-md-0">
+                                        <input class="form-control" id="inputFirstName" name="nom" type="text"
+                                               placeholder="Enter your last name" required/>
+                                        <label for="inputFirstName">Nom</label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-floating mb-3 mb-md-0">
+                                        <input class="form-control" id="inputFirstName" name="telephone" type="text"
+                                               placeholder="Enter your age" required/>
+                                        <label for="inputFirstName">Téléphone</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-floating mb-3 mb-md-0">
+                                        <input class="form-control" id="inputFirstName" name="adresse" type="text"
+                                               placeholder="Enter your age" required/>
+                                        <label for="inputFirstName">Adresse</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-floating mb-3 mb-md-0">
+                                        <select class="form-control" id="inputFirstName" name="profil">
+                                            <option>- - - Selectionnez- - -</option>
+                                            <option value="médecin">Médecin</option>
+                                            <option value="paramédical">Paramédical</option>
+                                            <option value="ambulancier">Ambulancier</option>
+                                        </select>
+                                        <label for="inputFirstName">Profil</label>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="3">
+                                    <div class="form-floating mb-3 mb-md-0">
+                                        <input class="form-control" id="inputFirstName" name="specialite" type="text"
+                                               placeholder="Enter your age" required/>
+                                        <label for="inputFirstName">Spécialité</label>
+                                    </div>
+                                    <br/>
+                                    <input type="submit" class="form-control btn btn-primary" value="Enregister">
+                                </td>
+                            </tr>
+
+                        </table>
+                        </font>
+                    </form>
+                </div>
+            </div>
+        </main>
+        {% include 'base/footer.html' %}
+    </div>
+</div>
+{% endblock %}

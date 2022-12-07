@@ -1,0 +1,214 @@
+{%extends 'main.html'%}
+{% load static %}
+{% block content %}
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <!-- Navbar Brand-->
+    <a class="navbar-brand ps-3" href="index.html"><img src="{% static 'img/sos-logo.png' %}" width="200px"
+                                                        class="logo"></a>
+
+    <!-- Sidebar Toggle-->
+    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+            class="fas fa-bars"></i></button>
+    <font color="#fff"></font>
+    <!-- Navbar Search-->
+    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+        <div class="input-group">
+            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
+                   aria-describedby="btnNavbarSearch"/>
+            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+        </div>
+    </form>
+    <!-- Navbar-->
+    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+               aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#!">Settings</a></li>
+                <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                <li>
+                    <hr class="dropdown-divider"/>
+                </li>
+                <li><a class="dropdown-item" href="#!">Logout</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+<div id="layoutSidenav">
+    {% include 'base/sidebar.html' %}
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <h1 class="mt-4">Add intervention</h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item active">Gestion personnel</li>
+                </ol>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-user"></i>
+                        PATIENT <br/>
+
+                        <table class="table">
+                            <tr>
+                                <td><font size="2px"><b>Prénom :</b> {{personne.prenom}}</font></td>
+                                <td><font size="2px"><b>Nom :</b> {{personne.nom}}</font></td>
+                                <td><font size="2px"><b>Sexe :</b> {{personne.sexe}}</font></td>
+                                <td><font size="2px"><b>Age :</b> {{personne.age}} ans</font></td>
+                                <td><font size="2px"><b>Tel :</b> {{personne.telephone}}</font></td>
+                                <td><font size="2px"><b>Adresse :</b> {{personne.adresse}}</font></td>
+                                <td><font size="2px"><b>Date création :</b> {{personne.date_creation}}</font></td>
+                            </tr>
+                        </table>
+
+                    </div>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-user"></i>
+                        Nouveau intervention
+                    </div>
+                    <form method="post" action="/detail_patient">
+                        {% csrf_token %}
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    <!-- personnels -->
+                                    <div class="form-floating mb-3 mb-md-0">
+
+                                        <select class="form-control" id="inputFirstName" name="medecin" required>
+                                            <option>- - - Select - - -</option>
+                                            {% for p in personnels %}
+                                            <option value="{{p.prenom_personnel}} {{p.nom_personnel}}">{{p.prenom_personnel}} {{p.nom_personnel}}</option>
+                                            {%endfor%}
+                                        </select>
+                                        <label for="inputFirstName">Médecin</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-floating mb-3 mb-md-0">
+                                        <select class="form-control" id="inputFirstName" name="paramedical" required>
+                                            <option>- - - Select - - -</option>
+                                            {% for p in personnels %}
+                                            <option value="{{p.prenom_personnel}} {{p.nom_personnel}}">{{p.prenom_personnel}} {{p.nom_personnel}}</option>
+                                            {%endfor%}
+                                        </select>
+                                        <label for="inputFirstName">Paramédical</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-floating mb-3 mb-md-0">
+                                         <select class="form-control" id="inputFirstName" name="ambulancier" required>
+                                            <option>- - - Select - - -</option>
+                                            {% for p in personnels %}
+                                            <option value="{{p.prenom_personnel}} {{p.nom_personnel}}">{{p.prenom_personnel}} {{p.nom_personnel}}</option>
+                                            {%endfor%}
+                                        </select>
+                                        <label for="inputFirstName">Ambulancier</label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-floating mb-3 mb-md-0">
+                                        <input class="form-control" id="inputFirstName" name="motif_appel" type="text"
+                                               placeholder="Enter your age" required/>
+                                        <label for="inputFirstName">Motif de l'appel</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-floating mb-3 mb-md-0">
+                                        <input class="form-control" id="inputFirstName" name="nom_appelant" type="text"
+                                               placeholder="" required/>
+                                        <label for="inputFirstName">Nom de l'appelant</label>
+                                    </div>
+                                </td>
+                                <td>
+                                   <div class="form-floating mb-3 mb-md-0">
+                                        <input class="form-control" id="inputFirstName" name="telephone_appelant" type="text"
+                                               placeholder="" required/>
+                                        <label for="inputFirstName">N° téléphone de l'appelant</label>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                 <td>
+                                   <div class="form-floating mb-3 mb-md-0">
+                                        <input class="form-control" id="inputFirstName" name="origine_appel" type="text"
+                                               placeholder="" required/>
+                                        <label for="inputFirstName">Origine de l'appel</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-floating mb-3 mb-md-0">
+                                        <select class="form-control" id="inputFirstName" name="lieu_intervention">
+                                            <option>- - - Selectionnez - - -</option>
+                                            <option value="Domicile">Domicile</option>
+                                            <option value="Voie publique">Voie publique</option>
+                                            <option value="Lieu de travail">Lieu de travail</option>
+                                            <option value="Etablissement santé">Etablissement santé</option>
+                                            <option value="Etablissement scolaire">Etablissement scolaire</option>
+                                            <option value="Assistance médicale">Assistance médicale</option>
+                                            <option value="Cabinet médicale">Cabinet médicale</option>
+                                            <option value="Lieu public">Lieu public</option>
+                                            <option>Autre</option>
+                                        </select>
+                                        <label for="inputFirstName">Spécialité</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-floating mb-3 mb-md-0">
+                                        <select class="form-control" id="inputFirstName" name="decision">
+                                            <option>- - - Selectionnez - - -</option>
+                                            <option value="Transport médicalisé - primaire">Transport médicalisé - primaire</option>
+                                            <option value="Transport médicalisé - secondaire">Transport médicalisé - secondaire</option>
+                                            <option value="Evasan">Evasan</option>
+                                            <option value="DCD aprés réa">DCD aprés réa</option>
+                                            <option value="DCD sans réa">DCD sans réa</option>
+                                            <option value="Laissé sur place">Laissé sur place</option>
+                                            <option value="Refus de transport">Refus de transport</option>
+                                            <option value="Blanche">Blanche</option>
+                                        </select>
+                                        <label for="inputFirstName">Décision</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-floating mb-3 mb-md-0">
+                                        <input class="form-control" id="inputFirstName" name="trajet" type="text"
+                                               placeholder="" required/>
+                                        <label for="inputFirstName">Trajet</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-floating mb-3 mb-md-0">
+                                        <input class="form-control" id="inputFirstName" name="num_ambulance" type="text"
+                                               placeholder="" required/>
+                                        <label for="inputFirstName">N° ambulance</label>
+                                    </div>
+                                </td>
+                                <td>
+                                   <div class="form-floating mb-3 mb-md-0">
+                                        <input class="form-control" id="inputFirstName" name="diagnostique_evoque" type="text"
+                                               placeholder="" required/>
+                                        <label for="inputFirstName">Diagnostique évoqué</label>
+                                       <input name="id_patient" type="hidden" value="{{personne.id}}"/>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <input type="submit" name="save_intervention" class="form-control btn btn-primary" value="Enregistrer">
+                                </td>
+                            </tr>
+                        </table>
+                        </font>
+                    </form>
+                </div>
+            </div>
+        </main>
+        {% include 'base/footer.html' %}
+    </div>
+</div>
+{% endblock %}
