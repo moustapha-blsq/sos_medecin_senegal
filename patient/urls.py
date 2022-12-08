@@ -23,5 +23,15 @@ urlpatterns = [
     path('save_patient', views.save),
     path('dossier/<int:id>', views.get_patient),
     path('add_intervention/<int:id>', views.add_intervention),
-    path('detail_patient', views.save_intervention)
+    path('detail_patient', views.save_intervention),
+    path('add_horaire/<int:id>', views.add_horaire),
+    path('save_horaire', views.save_horaire),
+    path('add_lesion', views.add_lesion),
+    path('save_lesion', views.save_lesion),
+    path('organe_lesion/<int:lesion>/<int:patient>', views.add_organe),
+    path('save_organe_diognostique', views.save_organe_diognostique),
+    path('add_signe_de_vie', views.add_signe_de_vie),
+    path('save_signe_vie', views.save_signe_vie),
+    path('sous_rubrique/<int:patient>/<int:signe_vie>', views.ajout_sous_rubrique),
+    path('save_score_signe', views.save_score_sous_rubrique)
 ]

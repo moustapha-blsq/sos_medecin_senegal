@@ -33,10 +33,10 @@ class Organe(models.Model):
     class Meta:
         db_table = 'organe'
 class Diagnostique_lesion_organe(models.Model):
+    nom_organe = models.CharField(max_length=100, null=True)
     resultat_diagnostique = models.CharField(max_length=100)
     patient_id = models.ForeignKey(Patient, on_delete=models.CASCADE)
     lesion_id = models.ForeignKey(Lesions, on_delete=models.CASCADE)
-    organe_id = models.ForeignKey(Organe, on_delete=models.CASCADE)
     class Meta:
         db_table = 'diagnostique_lesion_organe'
 class Detail_patient(models.Model):
@@ -64,6 +64,10 @@ class Signe_de_vie(models.Model):
 
 class Rubrique_signe_de_vie(models.Model):
     nom_rubrique = models.CharField(max_length=100, null=True)
+    score = models.IntegerField(null=True)
+    commentaire_score = models.CharField(max_length=200, null=True)
+    signe_de_vie_id = models.ForeignKey(Signe_de_vie, on_delete=models.CASCADE, null=True)
+    patient_id = models.ForeignKey(Patient, on_delete=models.CASCADE)
     class Meta:
         db_table = 'rubrique_signe_de_vie'
 class Score_signe_de_vie(models.Model):
